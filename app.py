@@ -202,9 +202,9 @@ with col_result:
         else:
             try:
                 with st.spinner("Подбираю примеры и генерирую письмо..."):
-                    index, _ = init_rag()
+                    emails, embeddings = init_rag()
                     lang_code = language.lower()
-                    examples = retrieve_examples(index, niche, recipient_type, lang_code)
+                    examples = retrieve_examples(emails, embeddings, niche, recipient_type, lang_code)
                     result = generate_email(niche, recipient_type, lang_code, product_description, examples)
 
                 subject = result.get("subject", "")
