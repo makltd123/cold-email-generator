@@ -1,0 +1,10 @@
+{
+  "id": "017",
+  "niche": "Медтех / HealthTech",
+  "recipient_type": "CTO",
+  "language": "en",
+  "subject": "Your EHR integration is leaking patient data — here's the proof",
+  "body": "Hi [Name],\n\nRan a quick scan of your API endpoints last week. Found 3 unencrypted data transfer points between your EHR and billing module — the kind that triggers HIPAA audit flags.\n\n43% of healthcare data breaches in 2024 started from internal integration gaps, not external attacks.\n\n[Product] wraps your existing stack with end-to-end encryption and audit logging in 48 hours — no rearchitecting needed.\n\nWant the full security report? I can send it over today.",
+  "why_it_works": "technical icebreaker with specific finding + compliance fear + no-rework offer",
+  "style": "provocative"
+}

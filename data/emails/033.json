@@ -1,0 +1,10 @@
+{
+  "id": "033",
+  "niche": "SaaS / IT",
+  "recipient_type": "VP Sales",
+  "language": "en",
+  "subject": "Your reps are spending 40% of their time on non-selling activities",
+  "body": "Hi [Name],\n\nSalesforce's State of Sales report found that reps spend only 28% of their week actually selling. The rest: CRM updates, internal meetings, proposal formatting, and chasing approvals.\n\nAt your team size, that's roughly 2 full-time reps worth of capacity sitting idle every week.\n\n[Product] automates CRM logging, proposal generation, and approval workflows — giving reps back 8–10 hours per week. One VP of Sales added $340K ARR in one quarter without hiring.\n\nWorth 20 minutes to walk through?",
+  "why_it_works": "data-driven — Salesforce citation + team-size calculation + ARR impact without headcount",
+  "style": "data-driven"
+}

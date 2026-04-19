@@ -1,0 +1,9 @@
+{
+  "id": "012",
+  "niche": "SaaS / IT",
+  "recipient_type": "CEO",
+  "language": "en",
+  "subject": "Your churn rate is hiding in plain sight — here's what I found",
+  "body": "Hi [Name],\n\nSaw your post about hitting 500 customers — congrats on the milestone.\n\nAt that stage, most SaaS founders discover that churn quietly outpaces new MRR. The usual culprit: customers who never reach their 'aha moment' in the first 14 days.\n\n[Product] identifies at-risk users before they cancel and triggers the right intervention automatically. One client reduced churn by 22% in 60 days without changing the product.\n\nWorth a 20-minute call this week?",
+  "why_it_works": "milestone icebreaker + specific growth-stage pain + measurable result + simple CTA"
+}

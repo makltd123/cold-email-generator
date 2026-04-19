@@ -1,0 +1,9 @@
+{
+  "id": "014",
+  "niche": "Финансы / FinTech",
+  "recipient_type": "CTO",
+  "language": "en",
+  "subject": "Your API latency is costing you enterprise deals",
+  "body": "Hi [Name],\n\nTested your public API yesterday — p99 latency is around 800ms. That's a red flag for enterprise procurement teams who run technical due diligence.\n\nWe've seen FinTech companies lose 30–40% of enterprise pipeline at the technical review stage due to infrastructure concerns — not product quality.\n\n[Product] helps you optimize API performance and generate the technical documentation enterprise buyers expect. Two clients closed their first $100K+ deals within 90 days of implementation.\n\nHappy to share a technical breakdown — interested?",
+  "why_it_works": "specific technical finding + enterprise-stage pain + social proof with numbers + peer-level tone"
+}

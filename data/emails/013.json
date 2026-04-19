@@ -1,0 +1,9 @@
+{
+  "id": "013",
+  "niche": "E-commerce",
+  "recipient_type": "CEO",
+  "language": "en",
+  "subject": "3 things your top competitors do differently on Black Friday",
+  "body": "Hi [Name],\n\nNoticed [Company] ran a flat 20% discount during Black Friday — it works, but it's leaving money on the table compared to dynamic pricing strategies.\n\nTop e-commerce brands using personalized offers see 2.3x higher revenue per visitor during peak events — same traffic, different approach.\n\n[Product] runs dynamic promotions based on user behavior and inventory. Setup takes one afternoon, no dev needed.\n\nWant me to show you a quick before/after from a similar store?",
+  "why_it_works": "specific observation + competitor comparison + data + zero-friction offer"
+}

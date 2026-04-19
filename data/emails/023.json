@@ -1,0 +1,10 @@
+{
+  "id": "023",
+  "niche": "Маркетинговое агентство",
+  "recipient_type": "CMO",
+  "language": "en",
+  "subject": "Your agency is leaving 25% of retainer revenue on the table",
+  "body": "Hi [Name],\n\nMost agencies under-bill by 20–30% — not because they undercharge, but because time tracking is inconsistent and scope creep goes undocumented.\n\nChecked your pricing page: you're running project-based and retainer models. That mix is especially vulnerable to silent revenue leakage.\n\n[Product] tracks scope automatically and surfaces upsell moments before clients even ask. Agencies using it recover an average of $4,200/month in previously unbilled work.\n\nWant to see what that looks like for your revenue mix?",
+  "why_it_works": "data-driven — specific revenue loss framing + observation + concrete dollar amount recovery",
+  "style": "data-driven"
+}

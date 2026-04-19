@@ -1,0 +1,10 @@
+{
+  "id": "031",
+  "niche": "Логистика / Supply Chain",
+  "recipient_type": "CFO",
+  "language": "en",
+  "subject": "Your fuel spend has a 15% efficiency gap — here's where it hides",
+  "body": "Hi [Name],\n\nFuel is typically 30–35% of total fleet operating costs. Most logistics CFOs benchmark against industry averages — but the real comparison should be against route-optimized operations.\n\nThe average unoptimized fleet runs 12–18% more kilometers than necessary due to static routing and empty return legs.\n\n[Product] closes that gap through dynamic routing and load matching. One client reduced fuel spend by $180,000 annually on a 60-vehicle fleet.\n\nI can model the savings estimate for your fleet size — interested?",
+  "why_it_works": "data-driven CFO framing — cost percentage + specific gap + dollar-denominated result",
+  "style": "data-driven"
+}
