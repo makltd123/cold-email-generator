@@ -249,9 +249,9 @@ with col_result:
         else:
             try:
                 with st.spinner(t["spinner"]):
-                    emails, embeddings = init_rag()
+                    emails, embeddings, embed_model = init_rag()
                     lang_code = language.lower()
-                    examples = retrieve_examples(emails, embeddings, niche, recipient_type, lang_code)
+                    examples = retrieve_examples(emails, embeddings, embed_model, niche, recipient_type, lang_code)
                     result = generate_email(niche, recipient_type, lang_code, product_description, examples)
 
                 subject = result.get("subject", "")

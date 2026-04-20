@@ -25,19 +25,18 @@ def _cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
 def build_index():
     emails = _load_emails()
     if not emails:
-        return emails, np.array([])
+        return emails, np.array([]), None
 
     embed_model = NVIDIAEmbedding(model=EMBED_MODEL, api_key=NVIDIA_API_KEY)
     texts = [f"{e.get('subject', '')}\n{e.get('body', '')}" for e in emails]
     embeddings = embed_model.get_text_embedding_batch(texts, show_progress=False)
-    return emails, np.array(embeddings)
+    return emails, np.array(embeddings), embed_model
 
 
-def retrieve_examples(emails: list[dict], embeddings: np.ndarray, niche: str, recipient_type: str, language: str, top_k: int = 3) -> list[dict]:
+def retrieve_examples(emails: list[dict], embeddings: np.ndarray, embed_model, niche: str, recipient_type: str, language: str, top_k: int = 3) -> list[dict]:
     if not emails or embeddings.size == 0:
         return []
 
-    embed_model = NVIDIAEmbedding(model=EMBED_MODEL, api_key=NVIDIA_API_KEY)
     query_vec = np.array(embed_model.get_text_embedding(niche or "холодное письмо"))
 
     filtered = [(i, e) for i, e in enumerate(emails)

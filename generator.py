@@ -45,8 +45,17 @@ def _parse_response(text: str) -> dict:
     return {"subject": subject, "body": body}
 
 
+_llm_cache: dict = {}
+
+
+def _get_llm():
+    if "llm" not in _llm_cache:
+        _llm_cache["llm"] = NVIDIA(model=LLM_MODEL, api_key=NVIDIA_API_KEY)
+    return _llm_cache["llm"]
+
+
 def generate_email(niche: str, recipient_type: str, language: str, product_description: str, examples: list[dict]) -> dict:
-    llm = NVIDIA(model=LLM_MODEL, api_key=NVIDIA_API_KEY)
+    llm = _get_llm()
 
     user_prompt = _build_user_prompt(niche, recipient_type, language, product_description, examples)
 
