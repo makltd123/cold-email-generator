@@ -10,6 +10,49 @@ st.set_page_config(
     layout="wide",
 )
 
+TRANSLATIONS = {
+    "RU": {
+        "subtitle": "RAG-powered персонализация холодных B2B писем",
+        "form_title": "**Параметры получателя**",
+        "niche_label": "Ниша получателя",
+        "niche_placeholder": "например: IT аутсорсинг, e-commerce, SaaS",
+        "role_label": "Должность получателя",
+        "lang_label": "Язык письма",
+        "product_label": "Описание вашего продукта (опционально)",
+        "product_placeholder": "Кратко опишите что вы предлагаете...",
+        "generate_btn": "Сгенерировать письмо",
+        "empty_state": "Заполните форму слева и нажмите «Сгенерировать письмо»",
+        "no_emails_warning": "Добавьте примеры писем в /data/emails/ (JSON-файлы)",
+        "spinner": "Подбираю примеры и генерирую письмо...",
+        "subject_label": "Тема письма",
+        "body_label": "Письмо",
+        "copy_label": "**Скопировать письмо:**",
+        "examples_expander": "📚 Использованные примеры",
+        "error_msg": "Ошибка при генерации: {}",
+        "ui_lang_label": "Язык интерфейса",
+    },
+    "EN": {
+        "subtitle": "RAG-powered personalization for cold B2B emails",
+        "form_title": "**Recipient parameters**",
+        "niche_label": "Recipient niche",
+        "niche_placeholder": "e.g. IT outsourcing, e-commerce, SaaS",
+        "role_label": "Recipient role",
+        "lang_label": "Email language",
+        "product_label": "Your product description (optional)",
+        "product_placeholder": "Briefly describe what you offer...",
+        "generate_btn": "Generate email",
+        "empty_state": "Fill in the form on the left and click «Generate email»",
+        "no_emails_warning": "Add email examples to /data/emails/ (JSON files)",
+        "spinner": "Fetching examples and generating email...",
+        "subject_label": "Subject",
+        "body_label": "Email body",
+        "copy_label": "**Copy email:**",
+        "examples_expander": "📚 Used examples",
+        "error_msg": "Generation error: {}",
+        "ui_lang_label": "Interface language",
+    },
+}
+
 st.markdown("""
 <style>
     /* Global */
@@ -155,53 +198,57 @@ def check_emails_exist() -> bool:
     return any(f.endswith(".json") for f in os.listdir(emails_path))
 
 
+# ── UI Language selector ─────────────────────────────────────────────────────
+ui_lang = st.radio("", options=["RU", "EN"], horizontal=True, key="ui_lang", label_visibility="collapsed")
+t = TRANSLATIONS[ui_lang]
+
 # ── Header ──────────────────────────────────────────────────────────────────
 st.markdown("<h1>✉️ Cold Email Generator</h1>", unsafe_allow_html=True)
-st.markdown('<p class="subtitle">RAG-powered персонализация холодных B2B писем</p>', unsafe_allow_html=True)
+st.markdown(f'<p class="subtitle">{t["subtitle"]}</p>', unsafe_allow_html=True)
 
 # ── Layout ───────────────────────────────────────────────────────────────────
 col_form, col_result = st.columns([1, 1.3], gap="large")
 
 with col_form:
-    st.markdown("**Параметры получателя**")
+    st.markdown(t["form_title"])
 
     niche = st.text_input(
-        "Ниша получателя",
-        placeholder="например: IT аутсорсинг, e-commerce, SaaS",
+        t["niche_label"],
+        placeholder=t["niche_placeholder"],
         key="niche",
     )
     recipient_type = st.selectbox(
-        "Должность получателя",
+        t["role_label"],
         options=["CEO", "CMO", "CTO", "CFO", "COO", "HR", "VP Sales", "CPO", "Other"],
         key="recipient_type",
     )
     language = st.radio(
-        "Язык письма",
+        t["lang_label"],
         options=["RU", "EN"],
         horizontal=True,
         key="language",
     )
     product_description = st.text_area(
-        "Описание вашего продукта (опционально)",
-        placeholder="Кратко опишите что вы предлагаете...",
+        t["product_label"],
+        placeholder=t["product_placeholder"],
         height=100,
         key="product_description",
     )
     st.markdown("")
-    generate_btn = st.button("Сгенерировать письмо", use_container_width=True)
+    generate_btn = st.button(t["generate_btn"], use_container_width=True)
 
 with col_result:
     if not generate_btn:
         st.markdown(
-            '<div class="empty-state"><span>📝</span>Заполните форму слева и нажмите «Сгенерировать письмо»</div>',
+            f'<div class="empty-state"><span>📝</span>{t["empty_state"]}</div>',
             unsafe_allow_html=True,
         )
     else:
         if not check_emails_exist():
-            st.warning("Добавьте примеры писем в /data/emails/ (JSON-файлы)")
+            st.warning(t["no_emails_warning"])
         else:
             try:
-                with st.spinner("Подбираю примеры и генерирую письмо..."):
+                with st.spinner(t["spinner"]):
                     emails, embeddings = init_rag()
                     lang_code = language.lower()
                     examples = retrieve_examples(emails, embeddings, niche, recipient_type, lang_code)
@@ -211,19 +258,19 @@ with col_result:
                 body = result.get("body", "")
 
                 if subject:
-                    st.markdown('<div class="subject-label">Тема письма</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div class="subject-label">{t["subject_label"]}</div>', unsafe_allow_html=True)
                     st.markdown(f'<div class="subject-value">{subject}</div>', unsafe_allow_html=True)
 
-                st.markdown('<div class="body-label">Письмо</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="body-label">{t["body_label"]}</div>', unsafe_allow_html=True)
                 st.markdown(body)
 
                 st.markdown("---")
-                st.markdown("**Скопировать письмо:**")
+                st.markdown(t["copy_label"])
                 copy_text = f"Subject: {subject}\n\n{body}" if subject else body
                 st.code(copy_text, language=None)
 
                 if examples:
-                    with st.expander("📚 Использованные примеры"):
+                    with st.expander(t["examples_expander"]):
                         for ex in examples:
                             badge_niche = ex.get("niche", "—")
                             badge_role = ex.get("recipient_type", "—")
@@ -239,4 +286,4 @@ with col_result:
                             )
 
             except Exception as e:
-                st.error(f"Ошибка при генерации: {e}")
+                st.error(t["error_msg"].format(e))
